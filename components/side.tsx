@@ -1,5 +1,13 @@
-import { Button, Sidebar } from "grommet";
-import { CaretNext, CaretPrevious } from "grommet-icons";
+import { Button, Sidebar, Text, Box } from "grommet";
+import {
+  CaretNext,
+  CaretPrevious,
+  Scorecard,
+  Notes,
+  Calendar,
+  User,
+} from "grommet-icons";
+import styled from "styled-components";
 
 export interface SideBarProps {
   isOpen: boolean;
@@ -13,7 +21,77 @@ export function SideBar({ isOpen, onClose }: SideBarProps) {
         background="brand"
         round="small"
         style={{ height: "100vh" }}
-      ></Sidebar>
+        header={
+          <>
+            <Text size="large" alignSelf="center" margin={{ top: "medium" }}>
+              eommong
+            </Text>
+            <Divider style={{ paddingTop: 24, borderColor: "#FFFFFFF" }} />
+          </>
+        }
+        footer={<Text textAlign="center">made by eom</Text>}
+      >
+        <Box pad={{ vertical: "xxsmall" }}>
+          <Button plain>
+            {({ hover }) => (
+              <Box
+                background={hover ? "background-contrast" : undefined}
+                pad={{ horizontal: "small", vertical: "small" }}
+              >
+                <Text size="medium" textAlign={isOpen ? "start" : "center"}>
+                  <Calendar size="medium" style={{ verticalAlign: "sub" }} />{" "}
+                  {isOpen && "일정관리"}
+                </Text>
+              </Box>
+            )}
+          </Button>
+        </Box>
+        <Box pad={{ vertical: "xxsmall" }}>
+          <Button plain>
+            {({ hover }) => (
+              <Box
+                background={hover ? "background-contrast" : undefined}
+                pad={{ horizontal: "small", vertical: "small" }}
+              >
+                <Text size="medium" textAlign={isOpen ? "start" : "center"}>
+                  <Scorecard size="medium" style={{ verticalAlign: "sub" }} />{" "}
+                  {isOpen && "점수관리"}
+                </Text>
+              </Box>
+            )}
+          </Button>
+        </Box>
+        <Box pad={{ vertical: "xxsmall" }}>
+          <Button plain>
+            {({ hover }) => (
+              <Box
+                background={hover ? "background-contrast" : undefined}
+                pad={{ horizontal: "small", vertical: "small" }}
+              >
+                <Text size="medium" textAlign={isOpen ? "start" : "center"}>
+                  <Notes size="medium" style={{ verticalAlign: "sub" }} />{" "}
+                  {isOpen && "오답노트"}
+                </Text>
+              </Box>
+            )}
+          </Button>
+        </Box>
+        <Box pad={{ vertical: "xxsmall" }}>
+          <Button plain>
+            {({ hover }) => (
+              <Box
+                background={hover ? "background-contrast" : undefined}
+                pad={{ horizontal: "small", vertical: "small" }}
+              >
+                <Text size="medium" textAlign={isOpen ? "start" : "center"}>
+                  <User size="medium" style={{ verticalAlign: "sub" }} />{" "}
+                  {isOpen && "정보수정"}
+                </Text>
+              </Box>
+            )}
+          </Button>
+        </Box>
+      </Sidebar>
       <Button
         style={{
           width: isOpen ? 50 : 40,
@@ -52,3 +130,8 @@ export function SideBar({ isOpen, onClose }: SideBarProps) {
     </div>
   );
 }
+
+const Divider = styled.div`
+  width: 100%;
+  border-bottom: 1px solid;
+`;

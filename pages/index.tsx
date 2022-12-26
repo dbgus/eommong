@@ -1,15 +1,12 @@
 import {
   Anchor,
   Box,
-  Button,
   Card,
   CardBody,
   CardHeader,
   DataChart,
   Heading,
   Meter,
-  Page,
-  PageContent,
   PageHeader,
   Text,
 } from "grommet";
@@ -116,28 +113,50 @@ export default function Home() {
               </CardBody>
             </Card>
           </Box>
+
           <Box flex direction="row" justify="between" margin={{ top: "20px" }}>
-            <DataChart
-              data={data}
-              series={["date", "amount"]}
-              bounds={{ y: [0, 100] }}
-              chart={[
-                {
-                  property: "amount",
-                  type: "line",
-                  opacity: "medium",
-                  thickness: "xsmall",
-                  // round,
-                },
-                {
-                  property: "amount",
-                  type: "point",
-                  point: "star",
-                  thickness: "medium",
-                },
-              ]}
-              guide={{ x: { granularity: "fine" } }}
-            />
+            <Card
+              background="light-1"
+              style={{ padding: "10px 20px", width: "100%" }}
+            >
+              <CardHeader pad="small">
+                <Box flex direction="row" justify="between">
+                  <Heading level={3} margin="none" size="small">
+                    평균점수
+                  </Heading>
+                  <Text size="small" style={{ cursor: "pointer" }}>
+                    점수 확인
+                    <Text style={{ verticalAlign: "middle" }}>
+                      <FormNext size="medium" />
+                    </Text>
+                  </Text>
+                </Box>
+              </CardHeader>
+              <CardBody>
+                <DataChart
+                  data={data}
+                  series={["date", "amount"]}
+                  bounds={{ y: [0, 100] }}
+                  size={{ height: "medium", width: "fill" }}
+                  chart={[
+                    {
+                      property: "amount",
+                      type: "line",
+                      opacity: "medium",
+                      thickness: "xsmall",
+                      // round,
+                    },
+                    {
+                      property: "amount",
+                      type: "point",
+                      point: "star",
+                      thickness: "medium",
+                    },
+                  ]}
+                  guide={{ x: { granularity: "fine" } }}
+                />
+              </CardBody>
+            </Card>
           </Box>
         </Box>
       </Box>
