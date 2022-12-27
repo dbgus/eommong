@@ -1,4 +1,6 @@
+import { useRouter } from "next/router";
 import { Button, Sidebar, Text, Box } from "grommet";
+
 import {
   CaretNext,
   CaretPrevious,
@@ -15,6 +17,7 @@ export interface SideBarProps {
 }
 
 export function SideBar({ isOpen, onClose }: SideBarProps) {
+  const router = useRouter();
   return (
     <div style={{ position: "fixed", width: isOpen ? 290 : 100 }}>
       <Sidebar
@@ -23,7 +26,13 @@ export function SideBar({ isOpen, onClose }: SideBarProps) {
         style={{ height: "100vh" }}
         header={
           <>
-            <Text size="large" alignSelf="center" margin={{ top: "medium" }}>
+            <Text
+              size="large"
+              alignSelf="center"
+              margin={{ top: "medium" }}
+              style={{ cursor: "pointer" }}
+              onClick={() => router.push("/")}
+            >
               eommong
             </Text>
             <Divider style={{ paddingTop: 24, borderColor: "#FFFFFFF" }} />
@@ -37,6 +46,7 @@ export function SideBar({ isOpen, onClose }: SideBarProps) {
               <Box
                 background={hover ? "background-contrast" : undefined}
                 pad={{ horizontal: "small", vertical: "small" }}
+                onClick={() => router.push("/calendar")}
               >
                 <Text size="medium" textAlign={isOpen ? "start" : "center"}>
                   <Calendar size="medium" style={{ verticalAlign: "sub" }} />{" "}
@@ -52,6 +62,7 @@ export function SideBar({ isOpen, onClose }: SideBarProps) {
               <Box
                 background={hover ? "background-contrast" : undefined}
                 pad={{ horizontal: "small", vertical: "small" }}
+                onClick={() => router.push("/score")}
               >
                 <Text size="medium" textAlign={isOpen ? "start" : "center"}>
                   <Scorecard size="medium" style={{ verticalAlign: "sub" }} />{" "}
@@ -67,6 +78,7 @@ export function SideBar({ isOpen, onClose }: SideBarProps) {
               <Box
                 background={hover ? "background-contrast" : undefined}
                 pad={{ horizontal: "small", vertical: "small" }}
+                onClick={() => router.push("/note")}
               >
                 <Text size="medium" textAlign={isOpen ? "start" : "center"}>
                   <Notes size="medium" style={{ verticalAlign: "sub" }} />{" "}
@@ -82,6 +94,7 @@ export function SideBar({ isOpen, onClose }: SideBarProps) {
               <Box
                 background={hover ? "background-contrast" : undefined}
                 pad={{ horizontal: "small", vertical: "small" }}
+                onClick={() => router.push("/mypage")}
               >
                 <Text size="medium" textAlign={isOpen ? "start" : "center"}>
                   <User size="medium" style={{ verticalAlign: "sub" }} />{" "}
