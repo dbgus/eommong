@@ -144,7 +144,6 @@ export default function Home() {
                       type: "line",
                       opacity: "medium",
                       thickness: "xsmall",
-                      // round,
                     },
                     {
                       property: "amount",
